@@ -1,11 +1,5 @@
 # ⚖️ AI Legal Case Predictor – IPC Guide (RAG System)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/AI-RAG%20Pipeline-blue?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Backend-FastAPI-green?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/ML-NLP-purple?style=for-the-badge"/>
-</p>
-
 ---
 
 ## 📌 Problem Statement  
@@ -23,7 +17,32 @@ This project implements an **AI-powered legal analysis system** using a **Retrie
 
 - Extract legal meaning from case descriptions  
 - Retrieve relevant IPC sections using vector similarity  
-- Predict applicable laws with high accuracy  
+- Predict applicable laws with high accuracy
+
+---
+
+## 📄 Research Foundation  
+
+This project is based on an IEEE research paper:
+
+**“AI-Based Legal Case Predictor for IPC Sections Using NLP and Machine Learning”**
+
+### Key Contributions from Research:
+- Designed an NLP-based legal classification system for IPC prediction  
+- Implemented semantic retrieval using vector embeddings (FAISS)  
+- Integrated Retrieval-Augmented Generation (RAG) for improved contextual accuracy  
+- Achieved **92% F1-score** on classification tasks  
+- Reduced legal information retrieval time by ~40%  
+
+### Research → Implementation Mapping:
+
+| Research Component | Implementation |
+|------------------|--------------|
+| NLP Classification | `utils.py` (categorization + extraction) |
+| RAG Architecture | `rag_pipeline.py` |
+| Vector Database | FAISS |
+| LLM Reasoning | Groq (LLaMA3) |
+| System Interface | FastAPI + Gradio |
 
 ---
 
@@ -38,19 +57,19 @@ This project implements an **AI-powered legal analysis system** using a **Retrie
 ---
 
 ## 🏗️ Architecture  
-User Input (Case Description)
+User Input
 ↓
-OCR / Text Processing
+Text Processing (Cleaning + NLP)
 ↓
-Embedding Model (HuggingFace)
+Embedding Model (MiniLM)
 ↓
 FAISS Vector Search
 ↓
 LangChain Retrieval
 ↓
-LLM (Gemini / Groq)
+LLM (LLaMA3 via Groq)
 ↓
-Predicted IPC Sections + Explanation
+IPC Prediction + Explanation + Summary
 
 ---
 

@@ -1,7 +1,5 @@
 # ⚖️ AI Legal Case Predictor – IPC Guide (RAG System)
 
----
-
 ## 📌 Problem Statement  
 
 Identifying relevant **Indian Penal Code (IPC) sections** from legal case descriptions is:
@@ -58,17 +56,17 @@ This project is based on an IEEE research paper:
 
 ## 🏗️ Architecture  
 User Input
-↓
+->
 Text Processing (Cleaning + NLP)
-↓
+->
 Embedding Model (MiniLM)
-↓
+->
 FAISS Vector Search
-↓
+->
 LangChain Retrieval
-↓
+->
 LLM (LLaMA3 via Groq)
-↓
+->
 IPC Prediction + Explanation + Summary
 
 ---
@@ -102,7 +100,39 @@ ai-legal-case-predictor/
 
 ---
 
-## 🔌 API Endpoints  
+## Request 
+{
+  "case_description": "Person committed theft under..."
+}
 
-```http
-POST /predict
+## Responce
+{
+  "ipc_sections": ["IPC 378", "IPC 379"],
+  "confidence": 0.92,
+  "explanation": "Based on semantic similarity..."
+}
+
+---
+
+## ⚙️ Installation
+git clone https://github.com/Mr-Nobody0409/AI-Legal-Case-Predictor-IPC-Guide
+cd AI-Legal-Case-Predictor-IPC-Guide
+pip install -r requirements.txt
+uvicorn main:app --reload
+
+---
+
+## 🧪 Future Improvements
+Add frontend (React dashboard)
+Multi-language legal support
+Case law retrieval integration
+Deployment on cloud (OCI / AWS)
+
+---
+
+## 📚 References
+Indian Penal Code dataset
+RAG-based legal AI research
+
+
+

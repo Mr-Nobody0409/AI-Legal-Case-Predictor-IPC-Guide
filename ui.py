@@ -1,32 +1,45 @@
 import gradio as gr
-# ------------------------------ 
-# GRADIO UI 
-# ------------------------------ 
-def main(): 
-  with gr.Blocks(theme=gr.themes.Soft()) as ui: 
-    gr.Markdown("<h1 style='text-align:center;'>🏛 LawBot India — IPC Prediction & Legal Guidance</h1>") 
-    
-    with gr.Column() as input_col: 
-      name = gr.Textbox(label="Your Name") 
-      case_desc = gr.Textbox(label="Case Description", lines=5) 
-      submit = gr.Button("Analyze Case", variant="primary") 
-      
-    with gr.Column(visible=False) as output_col: 
-      result_md = gr.Markdown() 
-      clear_btn = gr.Button("Clear") 
-      
-    def on_submit(n, c): 
-      answer = chatbot_response(n, c) 
-      return ( gr.update(visible=False), # hide input 
-              gr.update(visible=True), # show output 
-              gr.update(value=answer) # fill markdown 
-             ) 
-    def on_clear(): 
-      return ( gr.update(visible=True), 
-              gr.update(visible=False), 
-              "", 
-              "" ) 
-    submit.click(on_submit, inputs=[name, case_desc], outputs=[input_col, output_col, result_md]) 
-    clear_btn.click(on_clear, outputs=[input_col, output_col, name, case_desc]) 
-    
+import requests
+
+API_URL = "http://127.0.0.1:8000/predict"
+
+def get_response(name, case_desc):
+    response = requests.post(API_URL, json={
+        "name": name,
+        "case_description": case_desc
+    })
+
+    data = response.json()
+
+    return f"""
+### 👤 {data['user']}
+
+### 📝 Category:
+{data['category']}
+
+### ⚖ IPC Sections:
+{", ".join(data['ipc_sections'])}
+
+### 📘 Summary:
+{data['summary']}
+
+### 👨‍⚖ Lawyer:
+{data['recommended_lawyer']}
+"""
+
+def main():
+    with gr.Blocks() as ui:
+        gr.Markdown("# ⚖ AI Legal Case Predictor")
+
+        name = gr.Textbox(label="Name")
+        case = gr.Textbox(label="Case Description")
+
+        output = gr.Markdown()
+        btn = gr.Button("Analyze")
+
+        btn.click(get_response, inputs=[name, case], outputs=output)
+
     ui.launch()
+
+if __name__ == "__main__":
+    main()

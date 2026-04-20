@@ -54,10 +54,16 @@ This project is based on an IEEE research paper:
 
 ---
 
-## Dataset
-- Source: IPC legal documents (PDF)
-- Preprocessing: cleaning + chunking
-- Evaluation: manual validation + classification metrics
+## Dataset & Evaluation
+
+- Source: IPC legal PDFs
+- Preprocessing: cleaning + chunking (1000 tokens, overlap 200)
+- Embedding: MiniLM (sentence-transformers)
+- Evaluation:
+  - Manual validation on test queries
+  - F1-score computed on predicted vs actual IPC sections
+
+Note: Evaluation performed on curated test samples.
 
 ---
 
@@ -120,6 +126,15 @@ IPC Prediction + Explanation + Summary
 ## ⚡ HOW TO RUN
 -uvicorn app:app --reload
 -python ui.py
+
+---
+
+## Challenges
+
+- Long legal text with complex structure
+- Context-sensitive interpretation of IPC sections
+- Semantic similarity vs keyword mismatch
+- Multi-label classification (multiple IPC sections per case)
 
 ---
 

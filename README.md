@@ -116,16 +116,16 @@ IPC Prediction + Explanation + Summary
 ---
 
 ## ⚙️ Installation
--git clone https://github.com/Mr-Nobody0409/AI-Legal-Case-Predictor-IPC-Guide
--cd AI-Legal-Case-Predictor-IPC-Guide
--pip install -r requirements.txt
--uvicorn main:app --reload
+- git clone https://github.com/Mr-Nobody0409/AI-Legal-Case-Predictor-IPC-Guide
+- cd AI-Legal-Case-Predictor-IPC-Guide
+- pip install -r requirements.txt
+- uvicorn main:app --reload
 
 ---
 
 ## ⚡ HOW TO RUN
--uvicorn app:app --reload
--python ui.py
+- uvicorn app:app --reload
+- python ui.py
 
 ---
 
@@ -139,16 +139,16 @@ IPC Prediction + Explanation + Summary
 ---
 
 ## 🧪 Future Improvements
--Add frontend (React dashboard)
--Multi-language legal support
--Case law retrieval integration
--Deployment on cloud (OCI / AWS)
+- Add frontend (React dashboard)
+- Multi-language legal support
+- Case law retrieval integration
+- Deployment on cloud (OCI / AWS)
 
 ---
 
 ## 📚 References
--Indian Penal Code dataset
--RAG-based legal AI research
+- Indian Penal Code dataset
+- RAG-based legal AI research
 
 
 

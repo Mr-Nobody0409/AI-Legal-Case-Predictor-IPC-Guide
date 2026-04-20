@@ -11,12 +11,12 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 
+# Load env
 load_dotenv()
-
 groq_api_key = os.getenv("GROQ_API_KEY")
 
 # ------------------------------
-# Load & preprocess data
+# Text Cleaning
 # ------------------------------
 def clean_text(text):
     text = re.sub(r"\n", " ", text)
@@ -24,6 +24,9 @@ def clean_text(text):
     text = text.encode("ascii", "ignore").decode()
     return text.strip()
 
+# ------------------------------
+# Load & Process Documents
+# ------------------------------
 def load_documents(path="data/"):
     loader = PyPDFDirectoryLoader(path, glob="*.pdf")
     docs = loader.load()
@@ -35,16 +38,16 @@ def load_documents(path="data/"):
     return splitter.split_documents(docs)
 
 # ------------------------------
-# Initialize RAG system
+# Build RAG Pipeline
 # ------------------------------
 def build_rag():
     docs = load_documents()
 
-    embedding = HuggingFaceBgeEmbeddings(
+    embeddings = HuggingFaceBgeEmbeddings(
         model_name="sentence-transformers/all-MiniLM-l6-v2"
     )
 
-    db = FAISS.from_documents(docs, embedding)
+    db = FAISS.from_documents(docs, embeddings)
 
     llm = ChatGroq(
         groq_api_key=groq_api_key,
@@ -52,23 +55,27 @@ def build_rag():
     )
 
     prompt = ChatPromptTemplate.from_template("""
-    You are an expert Indian lawyer.
+You are an expert Indian lawyer.
 
-    <context>
-    {context}
-    </context>
+<context>
+{context}
+</context>
 
-    Question: {input}
-    """)
+Question: {input}
+Helpful Answer:
+""")
 
     doc_chain = create_stuff_documents_chain(llm, prompt)
     retriever = db.as_retriever()
 
     return create_retrieval_chain(retriever, doc_chain)
 
-# Singleton
+# Initialize once
 rag_chain = build_rag()
 
+# ------------------------------
+# Run Query
+# ------------------------------
 def run_query(query: str):
     result = rag_chain.invoke({"input": query})
     return result["answer"]

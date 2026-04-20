@@ -6,10 +6,16 @@ from utils import extract_ipc_sections, categorize_case, recommend_lawyer, summa
 
 app = FastAPI(title="AI Legal Case Predictor")
 
+# ------------------------------
+# Request Schema
+# ------------------------------
 class CaseInput(BaseModel):
     name: str
     case_description: str
 
+# ------------------------------
+# API Endpoint
+# ------------------------------
 @app.post("/predict")
 def predict_case(data: CaseInput):
     answer = run_query(data.case_description)
@@ -27,6 +33,9 @@ def predict_case(data: CaseInput):
         "recommended_lawyer": lawyer
     }
 
+# ------------------------------
+# Health Check
+# ------------------------------
 @app.get("/")
 def home():
-    return {"message": "API running"}
+    return {"message": "AI Legal Case Predictor API is running"}

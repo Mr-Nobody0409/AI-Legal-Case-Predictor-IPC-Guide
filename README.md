@@ -88,18 +88,6 @@ IPC Prediction + Explanation + Summary
 
 ---
 
-## 📦 Project Structure  
-ai-legal-case-predictor/
-├── backend/ # API endpoints (FastAPI)
-├── models/ # ML / embedding logic
-├── data/ # IPC dataset
-├── rag_pipeline/ # LangChain + FAISS logic
-├── utils/ # Helper functions
-├── tests/ # Unit tests
-├── README.md
-
----
-
 ## Request 
 {
   "case_description": "Person committed theft under..."

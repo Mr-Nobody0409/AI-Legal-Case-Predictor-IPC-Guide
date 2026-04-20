@@ -54,6 +54,13 @@ This project is based on an IEEE research paper:
 
 ---
 
+## Dataset
+- Source: IPC legal documents (PDF)
+- Preprocessing: cleaning + chunking
+- Evaluation: manual validation + classification metrics
+
+---
+
 ## 🏗️ Architecture  
 User Input
 ->
@@ -107,6 +114,12 @@ git clone https://github.com/Mr-Nobody0409/AI-Legal-Case-Predictor-IPC-Guide
 cd AI-Legal-Case-Predictor-IPC-Guide
 pip install -r requirements.txt
 uvicorn main:app --reload
+
+---
+
+## ⚡ HOW TO RUN
+uvicorn app:app --reload
+python ui.py
 
 ---
 

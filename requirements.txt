@@ -1,6 +1,12 @@
 fastapi
 uvicorn
 pydantic
+gradio
+requests
+python-dotenv
 langchain
+langchain-community
+langchain-groq
 faiss-cpu
 transformers
+sentence-transformers

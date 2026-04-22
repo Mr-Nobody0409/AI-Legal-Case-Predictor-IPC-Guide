@@ -1,12 +1,9 @@
-fastapi
-uvicorn
-pydantic
 gradio
-requests
 python-dotenv
 langchain
 langchain-community
+langchain-core
 langchain-groq
-faiss-cpu
 transformers
 sentence-transformers
+faiss-cpu

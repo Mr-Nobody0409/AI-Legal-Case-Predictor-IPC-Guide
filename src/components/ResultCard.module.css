@@ -1,0 +1,226 @@
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  animation: fadeUp 0.4s ease both;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--ink);
+  gap: 1rem;
+}
+
+.verdictBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gold-light);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.verdictIcon { font-size: 1.2rem; }
+
+.resetBtn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 100px;
+  padding: 4px 14px;
+  color: rgba(245, 240, 232, 0.7);
+  font-size: 0.78rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.resetBtn:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.greeting {
+  padding: 1rem 1.5rem;
+  background: var(--parchment);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.greeting strong { color: var(--ink); }
+
+/* ── Stats Grid ── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.statBlock {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.1rem 1.5rem;
+  background: #fff;
+}
+
+.accent_gold .statIcon { color: var(--gold); }
+.accent_teal .statIcon { color: var(--teal-light); }
+
+.statIcon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+
+.statLabel {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
+.statValue {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+/* ── Sections ── */
+.section {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--parchment-dark);
+}
+
+.section:last-of-type { border-bottom: none; }
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.sectionIcon { font-size: 1rem; }
+
+/* IPC Chips */
+.ipcGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ipcChip {
+  background: var(--ink);
+  color: var(--gold-light);
+  border-radius: 100px;
+  padding: 4px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(196, 146, 42, 0.3);
+}
+
+/* Summary */
+.summaryBox {
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+}
+
+.summaryText {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--slate);
+}
+
+/* Full Analysis */
+.analysisBox {
+  background: var(--parchment);
+  border: 1px solid var(--parchment-dark);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.mdPara {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--slate);
+  margin-bottom: 0.75rem;
+}
+
+.mdH {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 1rem 0 0.4rem;
+}
+
+.mdUl, .mdOl {
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.mdLi {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--slate);
+  margin-bottom: 0.25rem;
+}
+
+.mdStrong { font-weight: 700; color: var(--ink); }
+.mdCode {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: var(--parchment-dark);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* Disclaimer */
+.disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: rgba(139, 26, 26, 0.04);
+  border-top: 1px solid rgba(139, 26, 26, 0.1);
+}
+
+.disclaimerIcon {
+  font-size: 0.9rem;
+  color: var(--crimson);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.disclaimer p {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--crimson);
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .statsGrid { grid-template-columns: 1fr; }
+  .section { padding: 1.25rem 1rem; }
+  .cardHeader { padding: 0.85rem 1rem; }
+}

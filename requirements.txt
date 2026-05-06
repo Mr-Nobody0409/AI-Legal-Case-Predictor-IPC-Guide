@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+langchain
+langchain-core
+langchain-community
+langchain-groq
+langchain-text-splitters
+sentence-transformers
+faiss-cpu
+huggingface-hub
+pypdf
+unstructured
+numpy
